@@ -4,18 +4,23 @@ packages:
   - tooling/*
 
 catalog:
-  "@tanstack/react-query": ^5.51.9
-  "@trpc/client": ^11.0.0-rc.466
-  "@trpc/react-query": ^11.0.0-rc.466
-  "@trpc/server": ^11.0.0-rc.466
-  eslint: ^9.7.0
-  prettier: ^3.3.3
-  typescript: ^5.5.3
-  zod: ^3.23.8
+  '@tanstack/react-query': 5.51.9
+  eslint: 9.7.0
+  prettier: 3.3.3
+  typescript: 5.5.4
+  tailwindcss: 3.4.6
+  zod: 3.23.8
 
 catalogs:
+  next15:
+    next: 15.0.0-rc.0
   react18:
     react: 18.3.1
     react-dom: 18.3.1
-    "@types/react": ^18.3.3
-    "@types/react-dom": ^18.3.0
+    '@types/react': ^18.3.3
+    '@types/react-dom': ^18.3.0
+  react19:
+    react: 19.0.0-rc-d025ddd3-20240722
+    react-dom: 19.0.0-rc-d025ddd3-20240722
+    '@types/react': npm:types-react@rc
+    '@types/react-dom': npm:types-react-dom@rc
