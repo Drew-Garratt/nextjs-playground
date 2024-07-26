@@ -1,0 +1,107 @@
+{
+  "folders": [
+    {
+      "name": "✨ root",
+      "path": ".",
+    },
+    {
+      "name": "🚀 nextjs-app",
+      "path": "apps/nextjs-app",
+    },
+    {
+      "name": "📦 ui",
+      "path": "packages/ui",
+    },
+    {
+      "name": "🔧 eslint",
+      "path": "tooling/eslint",
+    },
+    {
+      "name": "🔧 github",
+      "path": "tooling/github",
+    },
+    {
+      "name": "🔧 prettier",
+      "path": "tooling/prettier",
+    },
+    {
+      "name": "🔧 tailwind",
+      "path": "tooling/tailwind",
+    },
+    {
+      "name": "🔧 typescript",
+      "path": "tooling/typescript",
+    },
+  ],
+  "extensions": {
+    "recommendations": [
+      "folke.vscode-monorepo-workspace",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "yoavbls.pretty-ts-errors",
+      "bradlc.vscode-tailwindcss",
+      "stylelint.vscode-stylelint",
+      "editorconfig.editorconfig",
+      "vitest.explorer",
+      "Orta.vscode-jest",
+    ],
+  },
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "typescript.preferences.autoImportFileExcludePatterns": [
+      "next/router.d.ts",
+      "next/dist/client/router.d.ts",
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+    "eslint.useFlatConfig": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+    },
+    // Disable vscode formatting for js,jsx,ts,tsx files
+    // to allow dbaeumer.vscode-eslint to format them
+    "[javascript]": {
+      "editor.formatOnSave": false,
+    },
+    "eslint.alwaysShowStatus": true,
+    // https://github.com/Microsoft/vscode-eslint#mono-repository-setup
+    "eslint.workingDirectories": [
+      "./apps/nextjs-app",
+      "./packages/ui",
+      "./tooling/eslint",
+      "./tooling/github",
+      "./tooling/prettier",
+      "./tooling/tailwind",
+      "./tooling/typescript",
+    ],
+    "tailwindCSS.experimental.classRegex": [
+      ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+      ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ],
+    "jest.disabledWorkspaceFolders": [
+      "🍂 nextjs-app",
+      "📦 ui",
+      "🔧 eslint",
+      "🔧 github",
+      "🔧 prettier",
+      "🔧 tailwind",
+      "🔧 typescript",
+    ],
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "🚀 nextjs-app",
+        "type": "node-terminal",
+        "request": "launch",
+        "command": "pnpm dev",
+        "cwd": "${workspaceFolder}/apps/nextjs-app/",
+        "skipFiles": ["<node_internals>/**"],
+      },
+    ],
+    "compounds": [],
+  },
+}
