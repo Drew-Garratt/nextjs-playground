@@ -1,11 +1,9 @@
+import {withSentryConfig} from "@sentry/nextjs";
 import path from "node:path";
 import url from "node:url";
-import { fileURLToPath } from "url";
 import withNextIntl from 'next-intl/plugin';
-import createJiti from "jiti";
 
-// Import env files to validate at build time. Use jiti so we can load .ts files in here.
-createJiti(fileURLToPath(import.meta.url))("./src/env");
+import {env} from "./src/env.mjs";
 
 const workspaceRoot = path.resolve(
   path.dirname(url.fileURLToPath(import.meta.url)),
@@ -15,16 +13,16 @@ const workspaceRoot = path.resolve(
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  ...(process.env.NEXT_BUILD_ENV_OUTPUT === "standalone"
+  ...(env.NEXT_BUILD_ENV_OUTPUT === "standalone"
     ? { output: "standalone" }
     : {}),
 
   experimental: {
     // @link https://nextjs.org/docs/advanced-features/output-file-tracing#caveats
-    ...(process.env.NEXT_BUILD_ENV_OUTPUT === "standalone"
+    ...(env.NEXT_BUILD_ENV_OUTPUT === "standalone"
       ? { outputFileTracingRoot: workspaceRoot }
       : {}),
-    testProxy: process.env.TEST_PROXY === "true" ? true : false,
+    testProxy: env.NEXT_BUILD_ENV_TESTPROXY,
     instrumentationHook: true,
     reactCompiler: true,
 
@@ -49,7 +47,7 @@ const nextConfig = {
 
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: {
-    ignoreDuringBuilds: !process.env.NEXT_BUILD_ENV_LINT,
+    ignoreDuringBuilds: !env.NEXT_BUILD_ENV_LINT,
     // dirs: [`${__dirname}/src`],
   },
   typescript: { ignoreBuildErrors: true },
@@ -102,7 +100,85 @@ const nextConfig = {
   },
 };
 
-// Next.js Configuration with `next.intl` enabled
-const nextWithIntl = withNextIntl('./src/i18n.tsx')(nextConfig);
+export default withSentryConfig(nextWithIntl, {
+// For all available options, see:
+// https://github.com/getsentry/sentry-webpack-plugin#options
 
-export default nextWithIntl;
+org: "drew-garratt",
+project: "javascript-nextjs",
+
+// Only print logs for uploading source maps in CI
+silent: !env.NEXT_BUILD_ENV_CI,
+
+// For all available options, see:
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+
+// Upload a larger set of source maps for prettier stack traces (increases build time)
+widenClientFileUpload: true,
+
+// Uncomment to route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
+// This can increase your server load as well as your hosting bill.
+// Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
+// side errors will fail.
+// tunnelRoute: "/monitoring",
+
+// Hides source maps from generated client bundles
+hideSourceMaps: true,
+
+// Automatically tree-shake Sentry logger statements to reduce bundle size
+disableLogger: true,
+
+// Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
+// See the following for more information:
+// https://docs.sentry.io/product/crons/
+// https://vercel.com/docs/cron-jobs
+automaticVercelMonitors: true,
+});
+
+
+let config = nextConfig;
+
+// Next.js Configuration with `next.intl` enabled
+config = withNextIntl('./src/i18n.tsx')(nextConfig);
+
+if (
+  env.NEXT_BUILD_ENV_SENTRY_ENABLED === true &&
+  env.SENTRY_AUTH_TOKEN !== ''
+) {
+  try {
+    // https://docs.sentry.io/platforms/javascript/guides/nextjs/
+    const withSentryConfig = await import('@sentry/nextjs').then(
+      (mod) => mod.withSentryConfig
+    );
+    // @ts-ignore cause sentry is not always following nextjs types
+    config = withSentryConfig(config, {
+      // Additional config options for the Sentry Webpack plugin. Keep in mind that
+      // the following options are set automatically, and overriding them is not
+      // recommended:
+      //   release, url, org, project, authToken, configFile, stripPrefix,
+      //   urlPrefix, include, ignore
+      // For all available options, see:
+      // https://github.com/getsentry/sentry-webpack-plugin#options.
+      // silent: isProd, // Suppresses all logs
+      silent: env.NEXT_BUILD_ENV_SENTRY_DEBUG === false,
+    });
+    console.log(`- ${pc.green('info')} Sentry enabled for this build`);
+  } catch {
+    console.log(`- ${pc.red('error')} Could not enable sentry, import failed`);
+  }
+}
+
+if (process.env.ANALYZE === 'true') {
+  try {
+    const withBundleAnalyzer = await import('@next/bundle-analyzer').then(
+      (mod) => mod.default
+    );
+    config = withBundleAnalyzer({
+      enabled: true,
+    })(config);
+  } catch {
+    // Do nothing, @next/bundle-analyzer is probably purged in prod or not installed
+  }
+}
+
+export default config;
