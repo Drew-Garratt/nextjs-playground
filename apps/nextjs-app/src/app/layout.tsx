@@ -7,8 +7,8 @@ import { AFACAD, PLAYFAIR } from "@/next.fonts";
 
 import { cn } from "@acme/ui";
 
-import { env } from "~/env";
-import { LocaleProvider } from "~/providers/localeProvider";
+import { env } from "~/env.mjs";
+import { AppProviders } from "../providers/app-providers";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -48,7 +48,7 @@ export default function RootLayout(props: { children: ReactNode }) {
           PLAYFAIR.variable,
         )}
       >
-        <LocaleProvider>{props.children}</LocaleProvider>
+        <AppProviders>{props.children}</AppProviders>
       </body>
     </html>
   );

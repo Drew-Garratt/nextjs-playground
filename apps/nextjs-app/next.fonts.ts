@@ -5,6 +5,7 @@ import { Afacad, Playfair } from "next/font/google";
 // within Tailwind (tailwind.config.ts) and Storybook (preview.js)
 export const AFACAD = Afacad({
   variable: "--font-afacad",
+  subsets: ["latin"],
 });
 
 // This configures the Next.js Font for IBM Plex Mono
@@ -12,4 +13,5 @@ export const AFACAD = Afacad({
 // within Tailwind (tailwind.config.ts) and Storybook (preview.js)
 export const PLAYFAIR = Playfair({
   variable: "--font-playfair",
+  subsets: ["latin"],
 });

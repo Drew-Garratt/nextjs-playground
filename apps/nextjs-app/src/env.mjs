@@ -57,7 +57,7 @@ export const env = createEnv({
    * This way you can ensure the app isn't built with invalid env vars.
    */
   server: {
-    SENTRY_AUTH_TOKEN: z.string().optional(),
+    SENTRY_AUTH_TOKEN: z.string().optional()
   },
 
   /**
@@ -71,8 +71,7 @@ export const env = createEnv({
    * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.
    */
   experimental__runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV,
-
+    NODE_ENV: process.env.NODE_ENV
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   skipValidation:

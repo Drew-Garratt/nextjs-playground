@@ -1,4 +1,4 @@
-import IndexPage from "@/src/components/indexPage";
+import IndexPage from "@/src/components/index-page";
 
 export const runtime = "edge";
 
