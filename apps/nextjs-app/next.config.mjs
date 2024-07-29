@@ -1,4 +1,3 @@
-import {withSentryConfig} from "@sentry/nextjs";
 import path from "node:path";
 import url from "node:url";
 import withNextIntl from 'next-intl/plugin';
@@ -35,6 +34,7 @@ const nextConfig = {
     // @link {https://github.com/vercel/next.js/pull/22867|Original PR}
     // @link {https://github.com/vercel/next.js/discussions/26420|Discussion}
     externalDir: true,
+    mdxRs: true
   },
 
   reactStrictMode: true,
