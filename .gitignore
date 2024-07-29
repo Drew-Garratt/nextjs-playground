@@ -48,6 +48,8 @@ dist/
 .sentryclirc
 
 # Cache Files
+**/tsconfig.tsbuildinfo
+.cache/*
 cache
 .eslintjscache
 .eslintmdcache
