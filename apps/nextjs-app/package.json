@@ -21,7 +21,8 @@
     "next-intl": "3.17.2",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
-    "zod": "catalog:"
+    "zod": "catalog:",
+    "picocolors": "1.0.1"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
