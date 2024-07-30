@@ -8,6 +8,7 @@ export interface LocaleConfig {
   dateFormat: string;
   hrefLang: string;
   enabled: boolean;
+  default?: boolean;
 }
 
 export type FormattedMessage =
