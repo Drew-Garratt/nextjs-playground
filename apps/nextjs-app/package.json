@@ -9,9 +9,9 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "next dev --turbo",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx,.graphql --cache --cache-location ../../.cache/eslint/nextjs-app.eslintcache",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --project ./tsconfig.json --noEmit"
   },
   "dependencies": {
     "@acme/ui": "workspace:*",
