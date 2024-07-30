@@ -1,41 +1,42 @@
-'use strict';
+"use strict";
 
-import localeConfig from './i18n/config.json' assert { type: 'json' };
+import localeConfig from "./i18n/config.json" assert { type: "json" };
 
 // This provides the fallback locale information for the Next.js Application
 // In the unlikely event config.json is malformed or missing, this will be used
 /** @type {import('./types').LocaleConfig} */
 const fallbackLocale = {
-  "code": "en",
-  "localName": "English",
-  "name": "English",
-  "langDir": "ltr",
-  "dateFormat": "MM.DD.YYYY",
-  "hrefLang": "en-GB",
-  "enabled": true,
-  "default": true
-}
+  code: "en",
+  localName: "English",
+  name: "English",
+  langDir: "ltr",
+  dateFormat: "MM.DD.YYYY",
+  hrefLang: "en-GB",
+  enabled: true,
+  default: true,
+};
 
 // As set of available and enabled locales for the website
 // This is used for allowing us to redirect the user to any
 // of the available locales that we have enabled on the website
-const availableLocales = localeConfig.filter(locale => locale.enabled);
+const availableLocales = localeConfig.filter((locale) => locale.enabled);
 
 // This gives an easy way of accessing all available locale codes
-const availableLocaleCodes = availableLocales.map(locale => locale.code);
+const availableLocaleCodes = availableLocales.map((locale) => locale.code);
 
 // This provides the default locale information for the Next.js Application
 // This is marked by the unique `locale.default` property on the `en` locale
 /** @type {import('./types').LocaleConfig} */
-const defaultLocale = availableLocales.find(locale => locale.default) ?? fallbackLocale;
+const defaultLocale =
+  availableLocales.find((locale) => locale.default) ?? fallbackLocale;
 
 // Creates a Map of available locales for easy access
 const availableLocalesMap = Object.fromEntries(
-  localeConfig.map(locale => [locale.code, locale])
+  localeConfig.map((locale) => [locale.code, locale]),
 );
 
 // Creates all supported locales
-const allLocaleCodes = localeConfig.map(locale => locale.code);
+const allLocaleCodes = localeConfig.map((locale) => locale.code);
 
 export {
   allLocaleCodes,

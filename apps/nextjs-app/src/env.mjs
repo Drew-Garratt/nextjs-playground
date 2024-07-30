@@ -57,7 +57,7 @@ export const env = createEnv({
    * This way you can ensure the app isn't built with invalid env vars.
    */
   server: {
-    SENTRY_AUTH_TOKEN: z.string().optional()
+    SENTRY_AUTH_TOKEN: z.string().optional(),
   },
 
   /**
@@ -83,7 +83,7 @@ export const env = createEnv({
     NEXT_BUILD_ENV_BUILD_ID: process.env.NEXT_BUILD_ENV_BUILD_ID,
     NEXT_BUILD_ENV_SENTRY_ENABLED: process.env.NEXT_BUILD_ENV_SENTRY_ENABLED,
     NEXT_BUILD_ENV_SENTRY_DEBUG: process.env.NEXT_BUILD_ENV_SENTRY_DEBUG,
-    NEXT_BUILD_ENV_SENTRY_TRACING: process.env.NEXT_BUILD_ENV_SENTRY_TRACING
+    NEXT_BUILD_ENV_SENTRY_TRACING: process.env.NEXT_BUILD_ENV_SENTRY_TRACING,
   },
   skipValidation:
     !!process.env.CI || process.env.npm_lifecycle_event === "lint",

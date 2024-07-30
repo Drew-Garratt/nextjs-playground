@@ -1,9 +1,9 @@
-import path from "node:path";
+import path from 'node:path';
 import url from "node:url";
-import withNextIntl from 'next-intl/plugin';
-import pc from 'picocolors';
+import withNextIntl from "next-intl/plugin";
+import pc from "picocolors";
 
-import {env} from "./src/env.mjs";
+import { env } from "./src/env.mjs";
 
 const workspaceRoot = path.resolve(
   path.dirname(url.fileURLToPath(import.meta.url)),
@@ -34,7 +34,7 @@ const nextConfig = {
     // @link {https://github.com/vercel/next.js/pull/22867|Original PR}
     // @link {https://github.com/vercel/next.js/discussions/26420|Discussion}
     externalDir: true,
-    mdxRs: true
+    mdxRs: true,
   },
 
   reactStrictMode: true,
@@ -104,16 +104,16 @@ const nextConfig = {
 let config = nextConfig;
 
 // Next.js Configuration with `next.intl` enabled
-config = withNextIntl('./src/i18n.tsx')(nextConfig);
+config = withNextIntl("./src/i18n.tsx")(nextConfig);
 
 if (
   env.NEXT_BUILD_ENV_SENTRY_ENABLED === true &&
-  env.SENTRY_AUTH_TOKEN !== ''
+  env.SENTRY_AUTH_TOKEN !== ""
 ) {
   try {
     // https://docs.sentry.io/platforms/javascript/guides/nextjs/
-    const withSentryConfig = await import('@sentry/nextjs').then(
-      (mod) => mod.withSentryConfig
+    const withSentryConfig = await import("@sentry/nextjs").then(
+      (mod) => mod.withSentryConfig,
     );
     // @ts-ignore cause sentry is not always following nextjs types
     config = withSentryConfig(config, {
@@ -143,16 +143,16 @@ if (
 
       silent: env.NEXT_BUILD_ENV_SENTRY_DEBUG === false,
     });
-    console.log(`- ${pc.green('info')} Sentry enabled for this build`);
+    console.log(`- ${pc.green("info")} Sentry enabled for this build`);
   } catch {
-    console.log(`- ${pc.red('error')} Could not enable sentry, import failed`);
+    console.log(`- ${pc.red("error")} Could not enable sentry, import failed`);
   }
 }
 
-if (process.env.ANALYZE === 'true') {
+if (process.env.ANALYZE === "true") {
   try {
-    const withBundleAnalyzer = await import('@next/bundle-analyzer').then(
-      (mod) => mod.default
+    const withBundleAnalyzer = await import("@next/bundle-analyzer").then(
+      (mod) => mod.default,
     );
     config = withBundleAnalyzer({
       enabled: true,

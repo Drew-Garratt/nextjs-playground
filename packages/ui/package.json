@@ -18,7 +18,7 @@
     "build": "tsc",
     "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsc",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.prettierignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "ui-add": "pnpm dlx shadcn-ui add && prettier src --write --list-different"

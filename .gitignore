@@ -55,3 +55,6 @@ cache
 .eslintmdcache
 .stylelintcache
 .prettiercache
+
+# Vitest config
+vitest.config.ts.timestamp*
