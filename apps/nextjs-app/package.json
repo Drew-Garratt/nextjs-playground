@@ -5,12 +5,19 @@
   "type": "module",
   "scripts": {
     "build": "next build",
-    "dev:msw": "cross-env NODE_NO_WARNINGS=1 MOCKING=true next dev --turbo",
-    "clean": "git clean -xdf .next .turbo node_modules",
+    "build-fast": "cross-env NEXT_BUILD_ENV_SENTRY_ENABLED=0 NEXT_BUILD_ENV_SOURCEMAPS=0 NEXT_BUILD_ENV_TYPECHECK=0 NEXT_BUILD_ENV_LINT=0 next build",
+    "bundle-analyze": "cross-env ANALYZE=true NEXT_BUILD_ENV_SENTRY_ENABLED=1 NEXT_BUILD_ENV_TYPECHECK=0 NEXT_BUILD_ENV_LINT=0 pnpm build",
+    "clean": "rimraf ./.next ./.out ./coverage ./tsconfig.tsbuildinfo ./node_modules/.cache",
     "dev": "next dev --turbo",
+    "dev-msw": "cross-env NODE_NO_WARNINGS=1 MOCKING=true next dev --turbo",
+    "fix-all-files": "eslint --fix",
     "format": "prettier --check . --ignore-path ../../.prettierignore",
     "lint": "eslint --cache --cache-location ../../.cache/eslint/nextjs-app.eslintcache",
     "start": "next start",
+    "test": "pnpm test-unit",
+    "test-e2e": "cross-env E2E_WEBSERVER_MODE=BUILD_AND_START playwright test",
+    "test-unit": "vitest run",
+    "test-unit-watch": "vitest watch --ui",
     "typecheck": "tsc --project ./tsconfig.json --noEmit"
   },
   "dependencies": {
@@ -64,7 +71,8 @@
     "@vitest/browser": "2.0.4",
     "msw": "2.3.4",
     "playwright-msw": "3.0.1",
-    "@faker-js/faker": "8.4.1"
+    "@faker-js/faker": "8.4.1",
+    "rimraf": "6.0.1"
   },
   "prettier": "@acme/prettier-config",
   "msw": {
