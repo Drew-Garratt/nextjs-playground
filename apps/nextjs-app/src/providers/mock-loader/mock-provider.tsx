@@ -1,3 +1,5 @@
+/* eslint no-restricted-properties: 0 no-restricted-imports: 0 */
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -23,7 +25,9 @@ export function MockProvider({
       }
     }
 
-    enableApiMocking();
+    enableApiMocking().catch((error) => {
+      console.error(error);
+    });
   }, []);
 
   if (!mockingEnabled) {

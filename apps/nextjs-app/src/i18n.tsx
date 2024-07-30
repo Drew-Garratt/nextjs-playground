@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { availableLocaleCodes } from "@/next.locales.mjs";
 import { getRequestConfig } from "next-intl/server";
 

@@ -1,11 +1,11 @@
 "use strict";
 
-import localeConfig from "./i18n/config.json" assert { type: "json" };
+import localeConfig from "./i18n/config.json";
 
 // This provides the fallback locale information for the Next.js Application
 // In the unlikely event config.json is malformed or missing, this will be used
 /** @type {import('./types').LocaleConfig} */
-const fallbackLocale = {
+export const fallbackLocale = {
   code: "en",
   localName: "English",
   name: "English",

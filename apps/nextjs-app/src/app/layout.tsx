@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import "~/app/globals.css";
 
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AFACAD, PLAYFAIR } from "@/next.fonts";
 
 import { cn } from "@acme/ui";

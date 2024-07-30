@@ -7,10 +7,10 @@ import {
   unstable_setRequestLocale,
 } from "next-intl/server";
 
-type LocaleProviderProps = {
+interface LocaleProviderProps {
   children: ReactNode;
   params?: { locale: string };
-};
+}
 
 export function generateStaticParams() {
   return availableLocaleCodes.map((locale) => ({ locale }));
