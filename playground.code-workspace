@@ -17,10 +17,6 @@
       "path": "tooling/eslint",
     },
     {
-      "name": "🔧 github",
-      "path": "tooling/github",
-    },
-    {
       "name": "🔧 prettier",
       "path": "tooling/prettier",
     },
@@ -71,7 +67,6 @@
       "./apps/nextjs-app",
       "./packages/ui",
       "./tooling/eslint",
-      "./tooling/github",
       "./tooling/prettier",
       "./tooling/tailwind",
       "./tooling/typescript",
@@ -84,7 +79,6 @@
       "🍂 nextjs-app",
       "📦 ui",
       "🔧 eslint",
-      "🔧 github",
       "🔧 prettier",
       "🔧 tailwind",
       "🔧 typescript",
