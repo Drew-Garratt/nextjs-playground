@@ -71,8 +71,19 @@ export const env = createEnv({
    * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.
    */
   experimental__runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    NODE_ENV: process.env.NODE_ENV,
+    NEXT_BUILD_ENV_OUTPUT: process.env.NEXT_BUILD_ENV_OUTPUT,
+    NEXT_BUILD_ENV_TSCONFIG: process.env.NEXT_BUILD_ENV_TSCONFIG,
+    NEXT_BUILD_ENV_TESTPROXY: process.env.NEXT_BUILD_ENV_TESTPROXY,
+    NEXT_BUILD_ENV_TYPECHECK: process.env.NEXT_BUILD_ENV_TYPECHECK,
+    NEXT_BUILD_ENV_LINT: process.env.NEXT_BUILD_ENV_LINT,
+    NEXT_BUILD_ENV_SOURCEMAPS: process.env.NEXT_BUILD_ENV_SOURCEMAPS,
+    NEXT_BUILD_ENV_CSP: process.env.NEXT_BUILD_ENV_CSP,
+    NEXT_BUILD_ENV_CI: process.env.NEXT_BUILD_ENV_CI,
+    NEXT_BUILD_ENV_BUILD_ID: process.env.NEXT_BUILD_ENV_BUILD_ID,
+    NEXT_BUILD_ENV_SENTRY_ENABLED: process.env.NEXT_BUILD_ENV_SENTRY_ENABLED,
+    NEXT_BUILD_ENV_SENTRY_DEBUG: process.env.NEXT_BUILD_ENV_SENTRY_DEBUG,
+    NEXT_BUILD_ENV_SENTRY_TRACING: process.env.NEXT_BUILD_ENV_SENTRY_TRACING
   },
   skipValidation:
     !!process.env.CI || process.env.npm_lifecycle_event === "lint",
