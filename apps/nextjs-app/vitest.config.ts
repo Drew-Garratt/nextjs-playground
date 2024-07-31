@@ -1,4 +1,4 @@
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import magicalSvg from "vite-plugin-magical-svg";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
@@ -21,7 +21,7 @@ export default defineConfig({
     browser: {
       enabled: true,
       provider: "playwright",
-      name: "chrome",
+      name: "chromium",
     },
     globals: true,
     deps: {
@@ -60,7 +60,7 @@ export default defineConfig({
       ["**/*.tsx", "jsdom"],
     ],
     passWithNoTests: false,
-    setupFiles: "./config/tests/setupVitest.ts",
+    setupFiles: "./test-utils/setup-vitest.ts",
     coverage: {
       provider: "v8",
       reporter: ["text", "clover"],

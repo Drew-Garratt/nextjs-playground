@@ -10,7 +10,11 @@
     },
     "plugins": [{ "name": "next" }],
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
-    "module": "esnext"
+    "module": "esnext",
+    "types": [
+      "@vitest/browser/matchers",
+      "@vitest/browser/providers/playwright"
+    ]
   },
   "include": [".", ".next/types/**/*.ts"],
   "exclude": ["node_modules", "public"]
