@@ -7,9 +7,7 @@ const testFiles = ["./src/**/*.test.{js,jsx,ts,tsx}"];
 
 export default defineConfig({
   plugins: [
-    react({
-      devTarget: "es2022",
-    }),
+    react(),
     tsconfigPaths(),
     magicalSvg({
       target: "react",
