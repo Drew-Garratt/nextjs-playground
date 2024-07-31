@@ -34,7 +34,8 @@
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
     "zod": "catalog:",
-    "classnames": "2.5.1"
+    "classnames": "2.5.1",
+    "next-themes": "0.3.0"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

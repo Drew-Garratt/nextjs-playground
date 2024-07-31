@@ -85,6 +85,9 @@ importers:
       next-intl:
         specifier: 3.17.2
         version: 3.17.2(next@15.0.0-rc.0(@babel/core@7.24.9)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.3)(babel-plugin-react-compiler@0.0.0-experimental-696af53-20240625)(react-dom@19.0.0-rc-d025ddd3-20240722(react@19.0.0-rc-d025ddd3-20240722))(react@19.0.0-rc-d025ddd3-20240722))(react@19.0.0-rc-d025ddd3-20240722)
+      next-themes:
+        specifier: 0.3.0
+        version: 0.3.0(react-dom@19.0.0-rc-d025ddd3-20240722(react@19.0.0-rc-d025ddd3-20240722))(react@19.0.0-rc-d025ddd3-20240722)
       picocolors:
         specifier: 1.0.1
         version: 1.0.1
@@ -273,7 +276,7 @@ importers:
         specifier: ^0.7.0
         version: 0.7.0
       next-themes:
-        specifier: ^0.3.0
+        specifier: 0.3.0
         version: 0.3.0(react-dom@19.0.0-rc-d025ddd3-20240722(react@19.0.0-rc-d025ddd3-20240722))(react@19.0.0-rc-d025ddd3-20240722)
       react-hook-form:
         specifier: ^7.52.1
