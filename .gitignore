@@ -58,3 +58,5 @@ cache
 
 # Vitest config
 vitest.config.ts.timestamp*
+
+*storybook.log

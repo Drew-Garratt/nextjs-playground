@@ -16,6 +16,11 @@
       "@vitest/browser/providers/playwright"
     ]
   },
-  "include": [".", ".next/types/**/*.ts"],
+  "include": [
+    ".",
+    ".next/types/**/*.ts",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
+  ],
   "exclude": ["node_modules", "public"]
 }
