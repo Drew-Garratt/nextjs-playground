@@ -1,3 +1,5 @@
+/* eslint no-restricted-properties: 0 no-restricted-imports: 0 */
+
 import type { Metadata, Viewport } from "next";
 
 import "~/app/globals.css";
@@ -10,16 +12,14 @@ import { cn } from "@acme/ui";
 import { env } from "~/env.mjs";
 import { AppProviders } from "../providers/app-providers";
 
-if (process.env.NEXT_RUNTIME === "nodejs" && process.env.NEXT_BUILD_ENV_MSW) {
+if (process.env.NEXT_RUNTIME === "nodejs" && env.NEXT_BUILD_ENV_MSW) {
   console.log("SERVER LISTEN");
 
-  const { server } = require("~/mocks/node");
+  const { server } = await import("~/mocks/node");
 
-  server.listen(
-    server.listen({
-      onUnhandledRequest: "bypass",
-    }),
-  );
+  server.listen({
+    onUnhandledRequest: "bypass",
+  });
 
   Reflect.set(fetch, "__FOO", "YES");
 }

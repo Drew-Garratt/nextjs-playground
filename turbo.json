@@ -41,7 +41,11 @@
       "interactive": true
     }
   },
-  "globalEnv": ["NEXT_BUILD_ENV_SENTRY_ENABLED", "NEXT_BUILD_ENV_TESTPROXY"],
+  "globalEnv": [
+    "NEXT_BUILD_ENV_SENTRY_ENABLED",
+    "NEXT_BUILD_ENV_MSW",
+    "NEXT_BUILD_ENV_TESTPROXY"
+  ],
   "globalPassThroughEnv": [
     "NODE_ENV",
     "NEXT_RUNTIME",

@@ -31,6 +31,7 @@ const config: StorybookConfig = {
     "@storybook/addon-themes",
     "@storybook/addon-viewport",
   ],
+  // eslint-disable-next-line @typescript-eslint/require-await
   webpack: async (config) => ({
     ...config,
     // We want to conform as much as possible with our target settings
