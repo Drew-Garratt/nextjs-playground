@@ -18,7 +18,10 @@ export function MockProvider({
        * this module and runs it during the build
        * in Node.js. This makes "msw/browser" import to fail.
        */
-      if (process.env.NEXT_RUNTIME !== "nodejs") {
+      if (
+        process.env.NEXT_BUILD_ENV_MSW &&
+        process.env.NEXT_RUNTIME !== "nodejs"
+      ) {
         const { worker } = await import("~/mocks/browser");
         await worker.start();
         enableMocking(true);

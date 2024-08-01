@@ -10,6 +10,20 @@ import { cn } from "@acme/ui";
 import { env } from "~/env.mjs";
 import { AppProviders } from "../providers/app-providers";
 
+if (process.env.NEXT_RUNTIME === "nodejs" && process.env.NEXT_BUILD_ENV_MSW) {
+  console.log("SERVER LISTEN");
+
+  const { server } = require("~/mocks/node");
+
+  server.listen(
+    server.listen({
+      onUnhandledRequest: "bypass",
+    }),
+  );
+
+  Reflect.set(fetch, "__FOO", "YES");
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production"

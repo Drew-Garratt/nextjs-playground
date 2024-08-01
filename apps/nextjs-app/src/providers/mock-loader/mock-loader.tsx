@@ -7,7 +7,7 @@ const MockProvider = dynamic(() =>
 );
 
 const MockLoader = ({ children }: { children: React.ReactNode }) => {
-  if (env.NEXT_BUILD_ENV_TESTPROXY !== true) {
+  if (env.NEXT_BUILD_ENV_MSW !== true) {
     return children;
   }
 

@@ -36,6 +36,7 @@ export const env = createEnv({
       .endsWith(".json")
       .default("tsconfig.json"),
     NEXT_BUILD_ENV_TESTPROXY: zConvertTruthyStrToBool(false),
+    NEXT_BUILD_ENV_MSW: zConvertTruthyStrToBool(false),
     NEXT_BUILD_ENV_TYPECHECK: zConvertTruthyStrToBool(falseOnCi),
     NEXT_BUILD_ENV_LINT: zConvertTruthyStrToBool(falseOnCi),
     NEXT_BUILD_ENV_SOURCEMAPS: zConvertTruthyStrToBool(isProd),
@@ -74,6 +75,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXT_BUILD_ENV_OUTPUT: process.env.NEXT_BUILD_ENV_OUTPUT,
     NEXT_BUILD_ENV_TSCONFIG: process.env.NEXT_BUILD_ENV_TSCONFIG,
+    NEXT_BUILD_ENV_MSW: process.env.NEXT_BUILD_ENV_MSW,
     NEXT_BUILD_ENV_TESTPROXY: process.env.NEXT_BUILD_ENV_TESTPROXY,
     NEXT_BUILD_ENV_TYPECHECK: process.env.NEXT_BUILD_ENV_TYPECHECK,
     NEXT_BUILD_ENV_LINT: process.env.NEXT_BUILD_ENV_LINT,

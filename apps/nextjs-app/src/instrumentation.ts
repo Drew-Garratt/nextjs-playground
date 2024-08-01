@@ -14,14 +14,4 @@ export async function register() {
   ) {
     await import("@/sentry.edge.config");
   }
-
-  if (
-    process.env.NEXT_RUNTIME === "nodejs" &&
-    process.env.NEXT_BUILD_ENV_TESTPROXY === "true"
-  ) {
-    const { server } = await import("~/mocks/node");
-    server.listen({
-      onUnhandledRequest: "bypass",
-    });
-  }
 }
